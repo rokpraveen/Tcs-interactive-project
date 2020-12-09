@@ -49,7 +49,7 @@ const appRoutes : Routes =[
     MatDialogModule,
     FlexLayoutModule,
     MatIconModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     MatCardModule,
     MatGridListModule,
     MatToolbarModule,
