@@ -1,0 +1,28 @@
+<p>
+    <mat-toolbar color="primary">
+      <span>TCS Interactive</span>
+    </mat-toolbar>
+  </p>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+    <mat-card *ngFor="let employe of employes" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size">
+      <mat-card-header>
+        <div mat-card-avatar ><img mat-card-image [src]="employe.url" alt="Photo of {{employe.title}}"></div>
+        <mat-card-title><small>Name:</small> {{employe.Name}}</mat-card-title>
+        <mat-card-subtitle>ID: {{employe.empid}}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <p></p>
+        <p>
+          <b>{{employe.content}}</b>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <footer>
+     <div class="footer-copyright text-center py-3">© 2020 Copyright
+      <a href="https://ultimatix.com/"> Tcs Interactive.com</a>
+    </div>
+  </footer>
+  
