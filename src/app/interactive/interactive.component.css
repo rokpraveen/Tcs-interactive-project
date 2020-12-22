@@ -4,5 +4,9 @@
     min-height: 170px;
     margin-top:2%;
     margin-left: 0.3%;
+    cursor: pointer;
+   
+    background-color: rgba(223, 236, 235, 0.678);
+   
 
 }

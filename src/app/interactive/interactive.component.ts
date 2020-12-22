@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatGridListModule} from '@angular/material/grid-list';
 import employeeData from '..//employee.json';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
   
 interface Employee {
     Name: String;
@@ -17,9 +17,17 @@ interface Employee {
   })
 
 export class InteractiveComponent{
+    
     constructor(private router: Router){}
+
+
     OnBack(){
         this.router.navigate(["/"]);
     }
     employes: Employee[] = employeeData;
+
+    onDetails(emp){
+        console.log(emp);
+        this.router.navigate(["/details", emp])
+    }
 }

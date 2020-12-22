@@ -18,16 +18,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule} from '@angular/router';
 import {InteractiveComponent} from './interactive/interactive.component';
 import { LoginComponent} from './login/login.component';
+import { DetailsComponent } from './details/details.component';
 
 const appRoutes : Routes =[
   {path :'', component : LoginComponent},
   {path: 'interactive', component: InteractiveComponent },
+  {path: 'details' , component: DetailsComponent}
   
 ];
 
@@ -36,7 +40,8 @@ const appRoutes : Routes =[
   declarations: [
     AppComponent,
     InteractiveComponent,
-    LoginComponent
+    LoginComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,9 @@ const appRoutes : Routes =[
     MatCardModule,
     MatGridListModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

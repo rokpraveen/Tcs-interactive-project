@@ -1,8 +1,10 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="form1">
-  <h1><b>Login Page</b></h1>
-<div  class="mat-elevation-z8 pad">
+  
+
+<div  class="mat-elevation-z8 pad" fxLayout.lg="row" fxLayoutAlign.lg="space-around center" fxLayoutGap="25px" fxLayout.md="row" fxLayoutAlign.md="space-around center" fxLayout.sm="column" fxLayoutAlign.sm="center center" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+  <img src="./assets/loginpic.png" alt="login photo" width="50%" height="50%"> 
 <form [formGroup]="form">
-    <div class="email-container">
+   <div>
       <mat-form-field>
   
         <input matInput placeholder="Email Address" formControlName="email" required>
@@ -20,7 +22,7 @@
         <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
         <button mat-icon-button matSuffix (click)="hide = !hide" >
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
+        </button>
           <mat-error *ngIf="form.get('password').invalid && (form.get('password').touched || form.get('password').dirty)">
             <mat-error *ngIf="form.get('password').errors.minlength">
              1. Password must be at least 8 characters.
@@ -32,7 +34,7 @@
       </mat-form-field>
     </div>
   <br>
-  <br>
+
     <button mat-raised-button color="primary" (click)=onSubmit(form.value) [disabled]="!form.valid"> Submit</button>
   </form>
   </div>
