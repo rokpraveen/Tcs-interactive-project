@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import {InteractiveComponent } from '../interactive/interactive.component';
+import {EmployeeService} from '../employee.service';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class DetailsComponent implements OnInit{
      three=true;
      four=true;
      five=true;
+   
     
      
    

@@ -34,7 +34,7 @@ export class InteractiveComponent implements OnInit{
     
 
     onDetails(emp){
-        console.log(emp);
+        emp;
         this.router.navigate(["/details", emp])
     }
    
