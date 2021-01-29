@@ -1,0 +1,50 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="form1">
+    
+  <div class="mat-elevation-z8 pad" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px" >
+    <img src="./assets/add employee.png" alt="add emplyee pic" width="15%" height="10%">
+    <form [formGroup]="form">
+    <div>
+       <mat-form-field>
+   
+         <input matInput placeholder="Full Name" formControlName="Name" required>
+         <mat-error *ngIf="form.get('Name').invalid && (form.get('Name').touched || form.get('Name').dirty)">
+             Please enter full name
+         </mat-error>
+       </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+          <input matInput placeholder="Employee ID" formControlName="empid" required>
+          <mat-error *ngIf="form.get('empid').invalid && (form.get('empid').touched || form.get('empid').dirty)">
+              Please enter valid Employee ID that contians only numbers
+          </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+          <input matInput placeholder="Experience" formControlName="experience" required>
+          <mat-error *ngIf="form.get('experience').invalid && (form.get('experience').touched || form.get('experience').dirty)">
+              Please enter your experience years
+          </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field>
+          <input matInput placeholder="Company"  formControlName="content">
+        </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Image Url" formControlName="url">
+      </mat-form-field>
+  </div>
+
+    <button mat-raised-button color="primary" (click)=onSubmit(form.value) [disabled]="!form.valid"> Submit</button>
+
+
+</form>
+</div>

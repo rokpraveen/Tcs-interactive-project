@@ -1,21 +1,90 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutAlign.xs="space-around start" class="tab">
+  <span class="ml-4">
+    <Label class="mr-2">Experience :</Label>
+      <select class="rounded" [(ngModel)]="selected">
+        <option [value]="">All</option>
+        <option  [value]="1"><1</option>
+        <option  [value]="2"><2</option>
+        <option  [value]="3"><3</option>
+        <option  [value]="4">Custom</option>
+      </select>
 
+<span *ngIf="selected==='4'" class="ml-4">
+  <input type="number" [(ngModel)]="min" class="num rounded mr-2">
+  <input type="number" [(ngModel)]="max" class="num rounded">
+</span>
 
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+</span>
 
-    <mat-card *ngFor="let employe of employes" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size" (click)=onDetails(employe)>
+<span class="mr-4">
+  <mat-form-field>
+  
+<input matInput class="searchbar" type="text"  placeholder="Search" [(ngModel)]="searchText" #searchbar>
+<button mat-icon-button matPrefix >
+  <mat-icon>search</mat-icon>
+</button>
+</mat-form-field>
+<button mat-raised-button class="emp ml-4" (click)=addEmp()> (+) Employee</button>
+</span>
+</div>
+    
+    
+ 
+  
+
+  <ng-container *ngIf="selected=='4'; then loggedIn; else loggedOut"></ng-container>
+
+<ng-template #loggedIn>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+    <ng-container *ngFor="let employe of employes| filter: searchText">
+      <mat-card class="mat-elevation-z8" *ngIf="(employe.experience>=min && employe.experience<=max)" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size" (click)=onDetails(employe)>
       
-      <mat-card-header>
-        <div mat-card-avatar ><img mat-card-image [src]="employe.url" alt="Photo of {{employe.title}}"></div>
-        <mat-card-title><small>Name:</small> {{employe.Name}}</mat-card-title>
-        <mat-card-subtitle >ID: {{employe.empid}}</mat-card-subtitle>
-      </mat-card-header>
+          
+        <mat-card-header>
+          <div mat-card-avatar ><img mat-card-image [src]="employe.url" alt="Photo of {{employe.title}}"></div>
+          <mat-card-title><small>Name:</small> {{employe.Name}}</mat-card-title>
+          <mat-card-subtitle >ID: {{employe.empid}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <p>
+            Experience: {{employe.experience}} Years
+          </p>
+          <p>
+            <b>{{employe.content}}</b>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    </div>
+</ng-template>
+<ng-template #loggedOut>
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+    <ng-container *ngFor="let employe of employes| filter: searchText">
+      <mat-card class="mat-elevation-z8" *ngIf="(employe.experience <= selected)" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size" (click)=onDetails(employe)>
       
-      <mat-card-content f>
-        <p></p>
-        <p>
-          <b>{{employe.content}}</b>
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+          
+        <mat-card-header>
+          <div mat-card-avatar ><img mat-card-image [src]="employe.url" alt="Photo of {{employe.title}}"></div>
+          <mat-card-title><small>Name:</small> {{employe.Name}}</mat-card-title>
+          <mat-card-subtitle >ID: {{employe.empid}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <p>
+            Experience: {{employe.experience}} Years
+          </p>
+          <p>
+            <b>{{employe.content}}</b>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    </div>
+</ng-template>
+
+
+  
+
+
 

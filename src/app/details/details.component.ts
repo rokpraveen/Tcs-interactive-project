@@ -3,6 +3,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
     selector: 'app-detail',
     templateUrl: './details.component.html',
@@ -16,8 +17,9 @@ export class DetailsComponent implements OnInit{
      three=true;
      four=true;
      five=true;
-    route: any;
-    emp: number;
+    
+     
+   
     constructor(private router: Router, private snackbar : MatSnackBar){}
    
 
@@ -30,8 +32,10 @@ export class DetailsComponent implements OnInit{
         this.snackbar.open('Details Updated', 'Done',   { duration: 2000, verticalPosition: 'top'});
         this.router.navigate(["/interactive"]);
     }
-    ngOnInit() {
-       
-      }   
+    ngOnInit(){
+
+    }
+
+    
 
 }

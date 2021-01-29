@@ -20,6 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -27,11 +28,15 @@ import { Routes, RouterModule} from '@angular/router';
 import {InteractiveComponent} from './interactive/interactive.component';
 import { LoginComponent} from './login/login.component';
 import { DetailsComponent } from './details/details.component';
+import { AddemployeeComponent } from './addemployee/addemployee.component';
+import { FilterPipe} from './filter.pipe';
+import {MatRadioModule} from '@angular/material/radio';
 
 const appRoutes : Routes =[
   {path :'', component : LoginComponent},
   {path: 'interactive', component: InteractiveComponent },
-  {path: 'details' , component: DetailsComponent}
+  {path: 'details' , component: DetailsComponent},
+  {path: 'addemployee' , component: AddemployeeComponent}
   
 ];
 
@@ -41,7 +46,9 @@ const appRoutes : Routes =[
     AppComponent,
     InteractiveComponent,
     LoginComponent,
-    DetailsComponent
+    DetailsComponent,
+    AddemployeeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -60,7 +67,9 @@ const appRoutes : Routes =[
     MatToolbarModule,
     MatDividerModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

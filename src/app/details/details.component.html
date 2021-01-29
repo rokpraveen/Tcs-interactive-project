@@ -1,14 +1,14 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="form1">
-    
+    <img src="./assets/detailspic.png" alt="details pic" width="7%" height="15%">
     <div class="mat-elevation-z8 pad" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px" >
-        <img src="./assets/detailspic.png" alt="details pic" width="25%" height="15%">
+        
         
         <form>
             <div>
             <mat-form-field>
                 
             
-                <input matInput placeholder="First Name" value='Praveen' required [disabled]='one'>
+                <input matInput placeholder="Name" value="Praveen" required [disabled]='one' >
                 <button mat-icon-button matSuffix (click)='one=!one'>
                     <mat-icon>edit</mat-icon>
                     </button>
@@ -18,17 +18,17 @@
         <div>
             <mat-form-field>
             
-                <input matInput placeholder="Second Name" value="Kumar" [disabled]='two'>
+                <input matInput placeholder="Experience" value="2" [disabled]='two' >
                 <button mat-icon-button matSuffix (click)='two=!two'>
                     <mat-icon>edit</mat-icon>
-                    </button>
+                </button>
 
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
             
-                <input matInput placeholder="ID" value="1599447" [disabled]='three' required>
+                <input matInput placeholder="ID" value="1599447" [disabled]='three' required >
                 <button mat-icon-button matSuffix (click)='three=!three'>
                     <mat-icon>edit</mat-icon>
                     </button>
@@ -38,7 +38,7 @@
         <div>
             <mat-form-field>
             
-                <input matInput placeholder="Company Name" value="TATA Consultancy Services" [disabled]='four' required>
+                <input matInput placeholder="Company Name" value="TATA Consultancy Services" [disabled]='four' required >
                 <button mat-icon-button matSuffix (click)='four=!four'>
                     <mat-icon>edit</mat-icon>
                     </button>
@@ -47,7 +47,7 @@
         </div>
         <div>
             <mat-form-field>
-                <textarea matInput placeholder="Address" value="3-130/1, Challapalli, Amalapuram, East Godavari District, Andhra Pradesh, 533222" [disabled]='five'></textarea>
+                <textarea matInput placeholder="Address" value="3-130/1, Challapalli, Amalapuram, East Godavari District, Andhra Pradesh, 533222" [disabled]='five' ></textarea>
                 <button mat-icon-button matSuffix (click)='five=!five'>
                     <mat-icon>edit</mat-icon>
                     </button>
