@@ -8,30 +8,31 @@
       <mat-form-field>
   
         <input matInput placeholder="Email Address" formControlName="email" required>
-        <mat-error *ngIf="form.get('email').invalid && (form.get('email').touched || form.get('email').dirty)">
-          <mat-error *ngIf="form.get('email').hasError('email')">
-            Please enter a valid email
-          </mat-error>
-        </mat-error>
+        
       </mat-form-field>
+      <mat-error *ngIf="form.get('email').invalid && (form.get('email').touched || form.get('email').dirty)">
+        <mat-error *ngIf="form.get('email').hasError('email')">
+          Please enter a valid email
+        </mat-error>
+      </mat-error>
     </div>
   
     <div>
       <mat-form-field>
   
         <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" >
+        <span mat-icon-button matSuffix (click)="hide = !hide" >
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-          <mat-error *ngIf="form.get('password').invalid && (form.get('password').touched || form.get('password').dirty)">
-            <mat-error *ngIf="form.get('password').errors.minlength">
-             1. Password must be at least 8 characters.
-            </mat-error>
-            <mat-error *ngIf="form.get('password').hasError('pattern')">
-             2. Password must contain UPPERCASE, LOWERCASE and Special Characters.
-            </mat-error>
-          </mat-error>
+        </span>
       </mat-form-field>
+      <mat-error *ngIf="form.get('password').invalid && (form.get('password').dirty)">
+        <mat-error *ngIf="form.get('password').errors.minlength">
+         1. Password must be at least 8 characters.
+        </mat-error>
+        <mat-error *ngIf="form.get('password').hasError('pattern')">
+         2. Password must contain UPPERCASE, LOWERCASE and Special Characters.
+        </mat-error>
+      </mat-error>
     </div>
   <br>
 

@@ -4,10 +4,11 @@ import employeeData from './employee.json';
 
 interface Employee {
     Name: String;
-    empid: String;
+    empid: number;
     experience: String;
     content: String;
     url: String;
+    address: String;
 }
 
 @Injectable({
@@ -23,11 +24,18 @@ export class EmployeeService{
 
     add(employe){
         this.employes.push(employe);
+        console.log(this.employes.indexOf(employe));
+    
     }
-    delete(employe){
-        const index = this.employes.indexOf(employe);
-        if(index>=0){
-            this.employes.splice(index,1);
+
+    
+    set(employe, id){
+    for(let i in this.employes)
+    {
+        if(this.employes[i].empid==id)
+        {
+            this.employes[i]=employe;
         }
     }
+}
 }

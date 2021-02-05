@@ -21,6 +21,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -31,6 +32,8 @@ import { DetailsComponent } from './details/details.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { FilterPipe} from './filter.pipe';
 import {MatRadioModule} from '@angular/material/radio';
+
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 const appRoutes : Routes =[
   {path :'', component : LoginComponent},
@@ -60,6 +63,7 @@ const appRoutes : Routes =[
     MatInputModule,
     MatDialogModule,
     FlexLayoutModule,
+    MatSelectModule,
     MatIconModule,
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
     MatCardModule,
@@ -71,7 +75,9 @@ const appRoutes : Routes =[
     MatTabsModule,
     MatRadioModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

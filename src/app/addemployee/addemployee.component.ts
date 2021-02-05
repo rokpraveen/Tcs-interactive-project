@@ -30,7 +30,7 @@ import { EmployeeService } from '../employee.service';
 
 
     onSubmit(val){
-      console.log(val);
+      
 
         this.employeeService.add(val);
         this.router.navigate(["/interactive"]);

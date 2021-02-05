@@ -2,5 +2,14 @@
     margin: 4%;
 }
 .pad{
-    padding:4%;
+    padding-bottom:5%;
+    padding-right:5%;
+    padding-left:5%;
+    padding-top:1%;
+}
+
+mat-icon{
+    cursor: pointer;
+    position: relative;
+    left: 900%;
 }

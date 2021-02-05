@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {InteractiveComponent } from '../interactive/interactive.component';
 import {EmployeeService} from '../employee.service';
 
@@ -14,16 +14,15 @@ import {EmployeeService} from '../employee.service';
 })
 
 export class DetailsComponent implements OnInit{
-     one=true;
-     two=true;
-     three=true;
-     four=true;
-     five=true;
+     editz=true;
+     text: string = 'Edit';
+    emp=0;
+    employes;
    
     
      
    
-    constructor(private router: Router, private snackbar : MatSnackBar){}
+    constructor(private router: Router,private Activatedroute:ActivatedRoute, private snackbar : MatSnackBar,private employeeService: EmployeeService, private formBuilder: FormBuilder){}
    
 
     onCancel(){
@@ -31,11 +30,51 @@ export class DetailsComponent implements OnInit{
 
     }
 
-    onUpdate(){
-        this.snackbar.open('Details Updated', 'Done',   { duration: 2000, verticalPosition: 'top'});
-        this.router.navigate(["/interactive"]);
-    }
+    onUpdate(employ){
+        if(this.text === 'Edit') { 
+            this.text = 'Update'
+            this.form.enable();
+          } else {
+            this.text = 'Edit'
+            this.snackbar.open('Details Updated', 'Done',   { duration: 2000, verticalPosition: 'top'});
+            this.router.navigate(["/interactive"]);
+      
+          this.employeeService.set(employ, this.emp);
+       
+          }
+        }
+
+    
+
+    form: FormGroup;
     ngOnInit(){
+        this.employes= this.employeeService.get();
+
+
+        this.Activatedroute.queryParamMap
+        .subscribe(params => { 
+          this.emp = +params.get('empl')||0;
+           
+      });
+      for(let employe of this.employes)
+      {
+        if(employe.empid == this.emp)
+        {
+
+      this.form=this.formBuilder.group({
+        Name : this.formBuilder.control({value: employe.Name, disabled : true}, [Validators.required]),
+        empid : this.formBuilder.control({value: employe.empid, disabled : true}, [Validators.compose([
+            Validators.required,Validators.pattern("[0-9]*")])]),
+        experience : this.formBuilder.control({value: employe.experience, disabled: true}, [Validators.required]),
+        content : this.formBuilder.control({value : employe.content, disabled: true}, [Validators.required]),
+        address: this.formBuilder.control({value : employe.address, disabled: true}),
+        url: this.formBuilder.control({value : employe.url, disabled: true})
+    
+        });
+      }
+    }
+
+  
 
     }
 

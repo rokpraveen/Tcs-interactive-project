@@ -7,28 +7,31 @@
        <mat-form-field>
    
          <input matInput placeholder="Full Name" formControlName="Name" required>
-         <mat-error *ngIf="form.get('Name').invalid && (form.get('Name').touched || form.get('Name').dirty)">
-             Please enter full name
-         </mat-error>
+         
        </mat-form-field>
+       <mat-error *ngIf="form.get('Name').invalid && (form.get('Name').touched || form.get('Name').dirty)">
+        Please enter full name
+    </mat-error>
     </div>
 
     <div>
         <mat-form-field>
           <input matInput placeholder="Employee ID" formControlName="empid" required>
-          <mat-error *ngIf="form.get('empid').invalid && (form.get('empid').touched || form.get('empid').dirty)">
-              Please enter valid Employee ID that contians only numbers
-          </mat-error>
+          
         </mat-form-field>
+        <mat-error *ngIf="form.get('empid').invalid && (form.get('empid').touched || form.get('empid').dirty)">
+          Please enter valid Employee ID that contian only numbers
+      </mat-error>
     </div>
 
     <div>
         <mat-form-field>
           <input matInput placeholder="Experience" formControlName="experience" required>
-          <mat-error *ngIf="form.get('experience').invalid && (form.get('experience').touched || form.get('experience').dirty)">
-              Please enter your experience years
-          </mat-error>
+          
         </mat-form-field>
+        <mat-error *ngIf="form.get('experience').invalid && (form.get('experience').touched || form.get('experience').dirty)">
+          Please enter your experience years
+      </mat-error>
     </div>
 
     <div>

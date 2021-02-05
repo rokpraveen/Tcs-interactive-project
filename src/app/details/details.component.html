@@ -1,61 +1,70 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="form1">
-    <img src="./assets/detailspic.png" alt="details pic" width="7%" height="15%">
+          <span mat-icon-button (click)="onCancel()" >
+            <mat-icon>cancel</mat-icon>
+          </span>
     <div class="mat-elevation-z8 pad" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px" >
         
+        <img src="./assets/detailspic.png" alt="details pic" width="25%" height="15%">
         
-        <form>
-            <div>
+        
+        
+        <form [formGroup]="form">
+            <ng-container *ngFor="let employe of employes">
+                <span *ngIf="(employe.empid== emp)">
+            <div >
             <mat-form-field>
                 
             
-                <input matInput placeholder="Name" value="Praveen" required [disabled]='one' >
-                <button mat-icon-button matSuffix (click)='one=!one'>
-                    <mat-icon>edit</mat-icon>
-                    </button>
+                <input matInput placeholder="Name" formControlName="Name" required >
+                
 
             </mat-form-field>
+            
         </div>
         <div>
             <mat-form-field>
             
-                <input matInput placeholder="Experience" value="2" [disabled]='two' >
-                <button mat-icon-button matSuffix (click)='two=!two'>
-                    <mat-icon>edit</mat-icon>
-                </button>
+                <input matInput placeholder="Experience" formControlName="experience" required>
+                
 
             </mat-form-field>
+           
         </div>
         <div>
             <mat-form-field>
             
-                <input matInput placeholder="ID" value="1599447" [disabled]='three' required >
-                <button mat-icon-button matSuffix (click)='three=!three'>
-                    <mat-icon>edit</mat-icon>
-                    </button>
+                <input matInput placeholder="ID" formControlName="empid" required >
+                
 
             </mat-form-field>
+            
         </div>
         <div>
             <mat-form-field>
             
-                <input matInput placeholder="Company Name" value="TATA Consultancy Services" [disabled]='four' required >
-                <button mat-icon-button matSuffix (click)='four=!four'>
-                    <mat-icon>edit</mat-icon>
-                    </button>
+                <input matInput placeholder="Company Name" formControlName="content" required >
+                
 
             </mat-form-field>
+           
         </div>
         <div>
             <mat-form-field>
-                <textarea matInput placeholder="Address" value="3-130/1, Challapalli, Amalapuram, East Godavari District, Andhra Pradesh, 533222" [disabled]='five' ></textarea>
-                <button mat-icon-button matSuffix (click)='five=!five'>
-                    <mat-icon>edit</mat-icon>
-                    </button>
+                <input matInput placeholder="Address" formControlName="address" required >
+                
+              </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Image Url" formControlName="url" required >
+                
               </mat-form-field>
         </div>
         <br>
-        <button mat-raised-button color="primary" class="mr-3" (click)="onCancel()">cancel</button>
-        <button mat-raised-button color="primary" (click)="onUpdate()">Update</button>
+        <button mat-raised-button color="primary" (click)="onUpdate(form.value)">{{text}}</button>
+        </span>
+        </ng-container>
+        
           
         </form>
     </div>

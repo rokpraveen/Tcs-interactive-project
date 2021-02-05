@@ -6,3 +6,6 @@
 .pad{
     padding: 4%;
 }
+mat-error {
+    font-size: x-small;
+}
