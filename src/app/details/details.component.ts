@@ -34,6 +34,7 @@ export class DetailsComponent implements OnInit{
         if(this.text === 'Edit') { 
             this.text = 'Update'
             this.form.enable();
+            
           } else {
             this.text = 'Edit'
             this.snackbar.open('Details Updated', 'Done',   { duration: 2000, verticalPosition: 'top'});
@@ -48,19 +49,16 @@ export class DetailsComponent implements OnInit{
 
     form: FormGroup;
     ngOnInit(){
-        this.employes= this.employeeService.get();
-
 
         this.Activatedroute.queryParamMap
         .subscribe(params => { 
           this.emp = +params.get('empl')||0;
            
       });
-      for(let employe of this.employes)
-      {
-        if(employe.empid == this.emp)
-        {
 
+      let employe = this.employeeService.find(this.emp);
+      console.log(employe);
+     
       this.form=this.formBuilder.group({
         Name : this.formBuilder.control({value: employe.Name, disabled : true}, [Validators.required]),
         empid : this.formBuilder.control({value: employe.empid, disabled : true}, [Validators.compose([
@@ -71,8 +69,6 @@ export class DetailsComponent implements OnInit{
         url: this.formBuilder.control({value : employe.url, disabled: true})
     
         });
-      }
-    }
 
   
 

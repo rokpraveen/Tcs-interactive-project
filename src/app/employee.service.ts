@@ -24,8 +24,11 @@ export class EmployeeService{
 
     add(employe){
         this.employes.push(employe);
-        console.log(this.employes.indexOf(employe));
     
+    }
+
+    find(id){
+        return this.employes.find(e => e.empid === id);
     }
 
     
