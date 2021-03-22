@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { EmployeeService } from '/Users/praveenkumar/myNewAngular/src/app/employee.service';
+import { EmployeeService } from '../employee.service';
 
 @Component({
     selector: 'add-emp', 
