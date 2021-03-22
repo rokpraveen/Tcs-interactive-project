@@ -2,7 +2,7 @@
   <span class="ml-4">
     <mat-form-field>
     
-  <input matInput class="searchbar" type="text"  placeholder="Search" [(ngModel)]="searchText" #searchbar>
+  <input matInput class="searchbar" type="text"  placeholder="Search" [(ngModel)]="searchName" #searchbar>
   <button mat-icon-button matPrefix >
     <mat-icon>search</mat-icon>
   </button>
@@ -29,11 +29,15 @@
 
 
 </div>
-    
-    
+<div fxLayout="column" fxLayoutAlign="end end">
+<button mat-icon-button class="table-view" (click)=tableView() matPrefix >
+  <mat-icon>table</mat-icon>Table-view
+</button>
+
+</div>
 
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
-    <ng-container *ngFor="let employe of employes| filter: searchText">
+    <ng-container *ngFor="let employe of employes| filter: searchName">
       <mat-card class="mat-elevation-z8" *ngIf="(selected=='4')? (employe.experience>=min && employe.experience<=max) : (employe.experience <= selected)" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size" (click)=onDetails(employe)>
       
           

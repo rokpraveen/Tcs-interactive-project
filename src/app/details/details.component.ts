@@ -9,7 +9,7 @@ import {EmployeeService} from '../employee.service';
 @Component({
     selector: 'app-detail',
     templateUrl: './details.component.html',
-    styleUrls: ['./details.component.css']
+    styleUrls: ['./details.component.scss']
 
 })
 
@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit{
      text: string = 'Edit';
     emp=0;
     employes;
+    empex: number;
    
     
      
@@ -53,10 +54,11 @@ export class DetailsComponent implements OnInit{
         this.Activatedroute.queryParamMap
         .subscribe(params => { 
           this.emp = +params.get('empl')||0;
+          this.empex= + params.get('empx')||0;
            
       });
 
-      let employe = this.employeeService.find(this.emp);
+      let employe = this.employeeService.find(this.emp, this.empex);
       console.log(employe);
      
       this.form=this.formBuilder.group({

@@ -1,13 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 import { AppComponent } from './app.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,58 +17,57 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
-
 import { FlexLayoutModule } from "@angular/flex-layout";
-
-import { Routes, RouterModule} from '@angular/router';
-import {InteractiveComponent} from './interactive/interactive.component';
 import { LoginComponent} from './login/login.component';
-import { DetailsComponent } from './details/details.component';
-import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { FilterPipe} from './filter.pipe';
 import {MatRadioModule} from '@angular/material/radio';
+import { AppRoutingModule } from './app-routing.module';
+import { AddemployeeComponent } from './addemployee/addemployee.component';
+import { InteractiveComponent } from './interactive/interactive.component';
+import { DetailsComponent } from './details/details.component';
+import { TableViewComponent } from './table-view/table-view.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HttpClientModule } from '@angular/common/http';
 
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
-const appRoutes : Routes =[
-  {path :'', component : LoginComponent},
-  {path: 'interactive', component: InteractiveComponent },
-  {path: 'details' , component: DetailsComponent},
-  {path: 'addemployee' , component: AddemployeeComponent}
-  
-];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InteractiveComponent,
     LoginComponent,
-    DetailsComponent,
     AddemployeeComponent,
-    FilterPipe
+    InteractiveComponent,
+    FilterPipe,
+    DetailsComponent,
+    TableViewComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatDialogModule,
-    FlexLayoutModule,
-    MatSelectModule,
-    MatIconModule,
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
-    MatCardModule,
-    MatGridListModule,
-    MatToolbarModule,
     MatDividerModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    NgxDatatableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatSelectModule,
+    FlexLayoutModule,
     MatTooltipModule,
+    MatCardModule,
+    MatTableModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatRadioModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+
   ],
   providers: [
     

@@ -10,16 +10,16 @@ interface Exp {
 @Component({
     selector: 'tcs-root', 
     templateUrl: './interactive.component.html',
-    styleUrls: ['./interactive.component.css']
+    styleUrls: ['./interactive.component.scss']
   })
 
 export class InteractiveComponent implements OnInit{
     @ViewChild('searchbar') searchbar: ElementRef;
-    searchText = '';
+    searchName = '';
     selected='All';
     min=0;
     max=50;
-    employes;
+
 
     exp: Exp[] = [
         {value: 100 , viewValue: 'All'},
@@ -28,26 +28,31 @@ export class InteractiveComponent implements OnInit{
         {value: '3', viewValue: '3'},
         {value: '4', viewValue: 'Custom'},
       ];
+  employes;
     
     constructor(private router: Router, private employeeService: EmployeeService){
         
     }
 
-    ngOnInit(){
-        this.employes= this.employeeService.get();
-    }
+    ngOnInit () : void {
+      this.employes= this.employeeService.get();
+      }
 
 
-    OnBack(){
+    OnBack = () => {
         this.router.navigate(["/"]);
     }
-    addEmp(){
+    addEmp =() => {
         this.router.navigate(["/addemployee"]);
     }
     
 
-    onDetails(emp){
-        this.router.navigate(["/details"], { queryParams: { empl: emp.empid } });
+    onDetails =(emp) => {
+        this.router.navigate(["/details"], { queryParams: { empl: emp.empid , empx : emp.experience }});
+    }
+
+    tableView = () => {
+        this.router.navigate(["/table-view"]);
     }
    
     

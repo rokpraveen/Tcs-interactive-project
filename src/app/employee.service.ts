@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import employeeData from './employee.json';
+import employeeData from '../../employee.json';
 
 
 interface Employee {
@@ -15,8 +15,8 @@ interface Employee {
     providedIn: 'root'
 })
 export class EmployeeService{
-
     employes: Employee[] = employeeData;
+
 
     get(){
         return this.employes;
@@ -27,8 +27,8 @@ export class EmployeeService{
     
     }
 
-    find(id){
-        return this.employes.find(e => e.empid === id);
+    find(id, ex){
+        return this.employes.find(e => (e.empid === id || e.experience === ex) );
     }
 
     

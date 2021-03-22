@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { EmployeeService } from '../employee.service';
+import { EmployeeService } from '/Users/praveenkumar/myNewAngular/src/app/employee.service';
 
 @Component({
     selector: 'add-emp', 
     templateUrl: './addemployee.component.html',
-    styleUrls: ['./addemployee.component.css']
+    styleUrls: ['./addemployee.component.scss']
   })
 
   export class AddemployeeComponent implements OnInit{
@@ -16,7 +16,7 @@ import { EmployeeService } from '../employee.service';
 
 
   form: FormGroup;
-  ngOnInit(){
+  ngOnInit () {
     this.form=this.formBuilder.group({
     Name : this.formBuilder.control('', [Validators.required]),
     empid : this.formBuilder.control('', [Validators.compose([
@@ -29,10 +29,10 @@ import { EmployeeService } from '../employee.service';
   }
 
 
-    onSubmit(val){
+    onSubmit = (val) => {
       
 
-        this.employeeService.add(val);
+      this.employeeService.add(val);
         this.router.navigate(["/interactive"]);
     }
 

@@ -11,7 +11,8 @@
 mat-form-field {
     width: 100%;
   }
-  mat-error {
+  
+mat-error {
     font-size: x-small;
 }
 
