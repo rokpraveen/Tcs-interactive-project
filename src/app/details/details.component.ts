@@ -57,6 +57,7 @@ export class DetailsComponent implements OnInit{
             
           } else {
             this.text = 'Edit'
+            this.breadcrumbDataService.editCount=0;
             this.snackbar.open('Details Updated', 'Done',   { duration: 2000, verticalPosition: 'top'});
             this.router.navigate(["/interactive"]);
       
