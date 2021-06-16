@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -28,6 +29,9 @@ import { DetailsComponent } from './details/details.component';
 import { TableViewComponent } from './table-view/table-view.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule } from '@angular/common/http';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { CommonPopupComponent } from './common-popup/common-popup.component';
 
 
 
@@ -40,7 +44,10 @@ import { HttpClientModule } from '@angular/common/http';
     InteractiveComponent,
     FilterPipe,
     DetailsComponent,
-    TableViewComponent
+    TableViewComponent,
+    BreadcrumbComponent,
+    ConfirmDialogComponent,
+    CommonPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatMenuModule,
     MatDialogModule,
     NgxDatatableModule,
     MatInputModule,

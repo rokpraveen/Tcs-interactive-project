@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; 
+import { BreadcrumbData } from '../core.model';
+import { breadcrumConstants } from '../breadcrum-constants';
+import { BreadcrumbDataService } from '../breadcrumb-data.service';
 import { EmployeeService } from '../employee.service';
 
 interface Exp {
@@ -21,6 +24,7 @@ export class InteractiveComponent implements OnInit{
     max=50;
 
 
+
     exp: Exp[] = [
         {value: 100 , viewValue: 'All'},
         {value: '1', viewValue: '1'},
@@ -30,12 +34,29 @@ export class InteractiveComponent implements OnInit{
       ];
   employes;
     
-    constructor(private router: Router, private employeeService: EmployeeService){
+    constructor(
+      private router: Router, 
+      private employeeService: EmployeeService,
+      private breadcrumbDataService : BreadcrumbDataService){
         
     }
 
     ngOnInit () : void {
       this.employes= this.employeeService.get();
+      this.breadcrumbDataService.backViaBreadcrumb=false;
+      this.breadcrumbManupilation();
+
+      }
+
+      breadcrumbManupilation = () => {
+        this.breadcrumbDataService.breadcrumbData = [];
+        let breadcrumbRemittance : BreadcrumbData;
+        breadcrumbRemittance= {
+          url : breadcrumConstants.BREADCRUM_INTERACTIVE.links.interactive,
+          name: breadcrumConstants.BREADCRUM_INTERACTIVE.name.interactive,
+        };
+        this.breadcrumbDataService.breadcrumbData.push(breadcrumbRemittance);
+        
       }
 
 

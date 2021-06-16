@@ -1,9 +1,8 @@
 $color0: rgba(223, 236, 235, 0.678);
-$color1 : rgb(88, 133, 190);
+$color1 : rgb(241, 248, 240);
 $color2 : rgb(61, 87, 173);
 $color3 : rgb(155, 227, 245);
-$color4 : rgb(88, 133, 190);
-$mycolor : white;
+$mycolor : rgb(61, 59, 59);
 
 
 .size{
@@ -28,7 +27,7 @@ $mycolor : white;
     background-color: $color1;
 }
 .tab{
-    background-color: $color2;
+    background-color: $color1;
     color: $mycolor;
 }
 
@@ -44,10 +43,14 @@ $mycolor : white;
 .select{
     width: 50%;
     max-height: 50px;
-    background-color: $color4;
+    background-color: $color1;
 }
 
 .table-view{
    margin-right: 18% ;
    margin-top: 1%;
+}
+.mainBody{
+    padding-left: 10px;
+    padding-bottom: 15px;
 }

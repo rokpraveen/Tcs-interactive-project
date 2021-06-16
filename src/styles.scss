@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+/*html, body { height: 100%;
+  overflow-x: hidden;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo80gWv-JmvV4MD-1DMuRA6ObgD04iinS_Jg&usqp=CAU");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+ }*/
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+  
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(237, 247, 252);}
+
+.table-view .ngx-datatable.scroll-vertical,
+.ngx-datatable.scroll-vertical, .ngx-datatable,
+.className .table-view{
+  margin: 16px 0px !important;
+  //box-shadow: 0px 1px 2px #000, 0px 3px 3px rgba(0, 0, 0, 0), 0px 10px 10px rgba(0, 0, 0, 0), 0px 14px 14px rgba(0, 0, 0, 0), 0px 19px 19px rgba(0, 0, 0, 0);
+  background-color: rgb(225, 244, 245);
+
+  .datatable-footer{
+    display: none;
+    width: 100%;
+    overflow: auto;
+  }
+  
+  .datatable-body{
+    width: 100% !important;
+    height: auto !important;
+    max-height: 410px !important;
+    overflow-y: auto;
+    border: 1px solid #dddddd;
+    border-bottom: none !important;
+    border-top: none !important;
+  }
+  datatable-header{
+    border: 1px solid #dddddd;
+    border-bottom: none !important;
+    width: 100% !important;
+    padding-bottom: 5px !important;
+    padding: 0 16px;
+    
+    .datatable-header-cell.iconColumnClass{
+      border: none !important;
+    }
+    .datatable-header-cell{
+      padding: 8px 0px 0px 8px;
+      border-right: 1px solid #ddd;
+      border-bottom: none;
+    }
+    .datatable-header-cell .header-sort-span{
+        display: block;
+        min-height: 50px;
+        white-space: normal;
+        font-weight: Bold;
+        font-size: 14px;
+        color: #000000;
+        margin-bottom: 18px;
+  
+    }
+    .header-sort-span{
+        cursor: pointer;
+    }
+    
+    
+  }
+  .datatable-header-cell.dataColumn{
+    .outerDiv{
+      width: calc(100% - 16px);
+      bottom: 0;
+      position: absolute;
+      input{
+        width: 100%;
+        
+      }
+    }
+  }
+  .datatable-header-cell .sort-btn{
+    display: none;
+  }
+
+  .datatable-header-cell.dataColumn.sort-active.sort-asc {
+    .columnHeaderName:after {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 8px;
+      margin-bottom: 4px;
+      vertical-align: top;
+    }
+  }
+  .datatable-header-cell.dataColumn.sort-active.sort-desc {
+    .columnHeaderName:after { 
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 8px;
+      margin-bottom: 4px;
+      vertical-align: top;
+    }
+  }
+  .datatable-header-cell.dataColumn.sort-active{
+    .columnHeaderName{
+      color: #0052c2;
+    }
+  }
+  
+  .datatable-header-cell input{
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin-top: 8px;
+    padding: 8px 0px 8px 8px;
+    height: 28px;
+    font-size: 12px;
+    color: #919191;
+    padding-right: 24px;
+  }
+  
+}
+
+tabel-view{
+  datatable-scroller{
+    width: 100% !important;
+  }
+  datatable-body-row{
+    width: 100% !important;
+  }
+  .datatable-row-center{
+    width: 100% !important;
+  }
+}
+.custom-dialog-container .mat-dialog-container{
+  margin: 0px;
+  padding: 0px;
+}
+.snackbarCls{
+    background: rgb(144, 172, 144);
+    color: black;
+}

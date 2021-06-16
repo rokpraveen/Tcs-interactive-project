@@ -1,0 +1,100 @@
+<div class="main">
+    <div class="headerCls">
+        {{mockData.header}}
+        <span fxFlex="1 1 auto"></span>
+        <mat-icon class="close_icon" (click)="closePopup()">close</mat-icon>
+    </div>
+    <div class="mainContainer">
+        <div class="infoMsg mb-2">{{mockData.infoMessage}} :</div>
+        <div class="details">
+            <div class="details-content" fxLayout="row" fxLayoutAlign="start">
+                <span class="details-1"><b>Name</b> : &nbsp;{{mockData.name}}</span>
+                <span class="details-1"><b>Experience</b> : &nbsp;{{mockData.experience}}</span>
+                <span class="details-1"><b>ID</b> : &nbsp;{{mockData.id}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hierarchyTable">
+        <form [formGroup]="userForm">
+            <div class="table-title mt-4 mb-2 "><b>Address Information</b>:</div>
+            <div class="addButton">
+                <button class="add" mat-raised-button type="button" (click)="adduser()">Add</button>
+            </div>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Street/ Village <span class="mandatory">*</span></th>
+                        <th>City <span class="mandatory">*</span></th>
+                        <th>State <span class="mandatory">*</span></th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="users">
+                    <ng-container  *ngFor="let item of userForm.get('users')['controls']; let i = index;">
+                        <ng-container [formGroupName]="i">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <input class="input" formControlName= "street" matInput type="text" required>
+                                        <mat-error *ngIf="userForm.get('street').invalid">Enter Street Name</mat-error>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <input class="input" formControlName= "city" matInput type="text" required>
+                                        <mat-error *ngIf="userForm.get('city').invalid">Enter City Name</mat-error>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <input class="input" formControlName= "state" matInput type="text" required>
+                                        <mat-error *ngIf="userForm.get('state').invalid">Enter State Name</mat-error>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </ng-container>
+                </tbody>
+                <!--<tbody formArrayName= "rows">
+                    <ng-container *ngIf="(addEnabled); then showData; else notShowData">
+                    </ng-container>
+
+                    <ng-template #notShowData>
+                        <tr class="addInfo">
+                            <td class="dislayNone" colspan="3">Click <strong>'+ Add'</strong>Button to Add address</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template #showData>
+                        <tr>
+                            <td>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <input formControlName= "street" matInput type="text">
+                                    <mat-error *ngIf="newForm.get('street').invalid">Enter Street Name</mat-error>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <input formControlName= "city" matInput type="text">
+                                    <mat-error *ngIf="newForm.get('city').invalid">Enter City Name</mat-error>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="form-field" appearance="outline">
+                                    <input formControlName= "state" matInput type="text">
+                                    <mat-error *ngIf="newForm.get('state').invalid">Enter State Name</mat-error>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </tbody>-->
+            </table>
+            <div class="action-buttons">
+                <mat-dialog-actions align="end">
+                    <button class="cancelBtn" mat-button (click)="closePopup()" *ngIf="submitIsTrue">{{mockData.button[0]}}</button>
+                    <button class="submitBtn" mat-button (click)="submitPopup()" *ngIf="submitIsTrue" [disabled]="!(userForm.touched && userForm.dirty && users.valid)">{{mockData.button[1]}}</button>
+                </mat-dialog-actions>
+            </div>
+        </form>
+    </div>
+    
+</div>

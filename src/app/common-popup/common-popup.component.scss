@@ -1,0 +1,71 @@
+
+.close_icon{
+    cursor: pointer;
+}
+
+.main{
+    background-color: rgb(192, 208, 223);
+    height: 100%;
+    .action-buttons{
+        padding-right: 30px;
+    }
+}
+.infoMsg{
+    font-size: 25px;
+    color: rgb(63, 51, 68);
+    
+}
+.hierarchyTable{
+    background-color: rgb(192, 208, 223);
+    padding-left: 32px;
+}
+.action-buttons{
+
+    background-color: rgb(192, 208, 223);
+}
+.addButton{
+    position: relative;
+    left: 60%;
+}
+.add{
+    background-color: rgb(192, 208, 223);  
+}
+.add:hover{
+    background-color: rgb(33, 198, 204);
+    color: white;
+}
+
+.mandatory{
+    color: red;
+}
+
+.headerCls{
+    padding-left: 32px;
+    padding-right: 10px;
+    font-size: 20px;
+    background-color: rgb(61, 87, 173);
+    height: 56px;
+    color: #ffffff;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    font-family: Connection-Bold !important;
+}
+.mainContainer{
+    padding-top: 20px;
+    padding-left: 32px;
+    font-size: 18px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.submitBtn{
+    background-color: rgb(64, 98, 161);
+    color: white;
+}
+.details-1{
+    padding-right: 40px;
+}
+.table-title{
+    text-decoration: underline;
+}

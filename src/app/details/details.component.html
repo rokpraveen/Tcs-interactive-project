@@ -1,7 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="form1">
-    <span mat-icon-button (click)="onCancel()" >
-      <mat-icon>cancel</mat-icon>
-    </span>
+    
 <div class="mat-elevation-z8 pad" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px" >
   
   <img src="./assets/detailspic.png" alt="details pic" width="25%" height="15%">
@@ -53,7 +51,7 @@
         </mat-form-field>
   </div>
   <br>
-  <button mat-raised-button color="primary" (click)="onUpdate(form.value)" [disabled]="form.invalid">{{text}}</button>
+  <button mat-raised-button [ngClass]="checkButtonDisable()" color="primary" (click)="onUpdate(form.value)" [disabled]="(form.invalid)">{{text}}</button>
   
     
   </form>

@@ -4,6 +4,7 @@
       <span class="ml-3">TCS Interactive</span>
     </mat-toolbar>
     <div class="content">
+      <app-breadcrumb *ngIf="breadcrumbDataService.breadcrumbData.length > 0"></app-breadcrumb>
       <router-outlet></router-outlet>
     </div>
 <div class="text-center footer" >© 2020 Copyright

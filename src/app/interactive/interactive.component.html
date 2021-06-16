@@ -36,9 +36,9 @@
 
 </div>
 
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+<div class="mainBody" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
     <ng-container *ngFor="let employe of employes| filter: searchName">
-      <mat-card class="mat-elevation-z8" *ngIf="(selected=='4')? (employe.experience>=min && employe.experience<=max) : (employe.experience <= selected)" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size" (click)=onDetails(employe)>
+      <mat-card *ngIf="(selected=='4')? (employe.experience>=min && employe.experience<=max) : (employe.experience <= selected)" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" class="size" (click)=onDetails(employe)>
       
           
         <mat-card-header>

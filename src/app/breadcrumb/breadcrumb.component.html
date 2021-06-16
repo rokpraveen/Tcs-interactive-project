@@ -1,0 +1,8 @@
+<div class="breadcrumb-container">
+    <ng-container *ngFor="let breadcrumb of breadcrumbDataService.breadcrumbData; let i=index; let last=last">
+        <a class="breadcrumb-link" *ngIf="!last" (click)="breadcrumbNavigate(breadcrumb, i)" >{{breadcrumb.name}} /
+            &nbsp;</a>
+        <span class="breadcrumb-last" *ngIf = "last">{{breadcrumb.name}}</span>
+        <span>{{breadcrumb.length}}</span>
+    </ng-container>
+</div>

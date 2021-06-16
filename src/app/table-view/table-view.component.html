@@ -1,52 +1,69 @@
-
-<div class="mt-3">
-<mat-form-field appearance="fill" class="ml-3">
-  <mat-label>select</mat-label>
-  <mat-select [(value)]="selected" >
-    <mat-option value="Name">Name</mat-option>
-    <mat-option value="ID">ID</mat-option>
-    <mat-option value="Experience">Experience</mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field appearance="fill" class="ml-3">
-  <mat-label>criteria</mat-label>
-  <mat-select [(value)]="criteria"  >
-    <mat-option value=">" *ngIf="selected=='Experience'">Greater than</mat-option>
-    <mat-option value="<" *ngIf="selected=='Experience'">Less than</mat-option>
-    <mat-option value="=">Equals</mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field class="ml-3">
-  <input matInput class="searchbar ml-3" type="text"  placeholder={{selected}} [(ngModel)]="searchName" (keyup)=filterData()>
-
-</mat-form-field>
-
-
+<div class="main">
+<div fxLayout= "row wrap" fxLayoutAlign="end" fxLayoutGap=" 15px"> 
+<button [ngClass]="filterButtonDisable()" (click)="filterButtonClicked()" class="filter-button" >Apply Filter</button>
+<button [ngClass]="resetButtonDisable()" (click)="resetButtonClicked()" class="filter-button" >Reset Filter</button>
 </div>
+<div class="table-view mat-elevation-z24">
+    <ngx-datatable class="bootstrap" [rows]="inputTable.rows" [columns]="inputTable.columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+      [rowHeight]="50"  [scrollbarH]="true" [scrollbarV]="true" [offset]="tableOffset"  (page)="onChange($event)">
 
-<ngx-datatable class="bootstrap" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-  [rowHeight]="50"  [scrollbarH]="true">
+        <ngx-datatable-column headerClass="dataColumn"  *ngFor= "let col of inputTable.columns; let i = index" [name]= "col.name" [prop]= "col.prop"
+         [sortable]= "true" [minWidth]="col.width">
 
-  <ngx-datatable-column name="Name" prop="Name">
+          <ng-template let-column='column' let-sort="sortFn" ngx-datatable-header-template>
+            <div class="header-sort-span columnHeaderName" (click)="sort()">
+              {{col.name}}
+            </div>
+            <div *ngIf="inputTable.filterRequired" class="outerDiv">
+              <div *ngIf="col.filterType!='dropdown'">
+                <input type="text" placeholder="Search" [(ngModel)]="allFieldVal[col.prop]" class="input" (keyup)="searchDataUsingFilter($event, col)"/>
+                <span class="filter-icon" [matMenuTriggerFor]="moreOptionsMenu">
+                  <mat-icon>filter_list_alt</mat-icon>
+                </span>
+              </div>
 
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.Name}}
-    </ng-template>
-  </ngx-datatable-column>
-  
-  <ngx-datatable-column name="Experience">
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.experience}}
-    </ng-template>
-  </ngx-datatable-column>
+            <mat-menu #moreOptionsMenu="matMenu" xPosition="before">
+              <ng-container *ngFor= "let filterList of columnFilter; let i = index;">
+                <div *ngIf=" filterList.prop === col.prop" class="list-icon">
+                  <ng-container *ngFor= "let filter of filterList.filter; let i= index;">
+                    <mat-item-list>
+                      <span fxLayout="column">
+                        <div (click)="filterClick(col, filter.value)" >
+                          {{filter.value}}
+                          <span *ngIf="filter.selected" class="expand-icon">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                          </span>
+                        </div>
+                      </span>
+                    </mat-item-list>
+                    <mat-divider *ngIf="(i<(filter.length-1))"></mat-divider>
+                  </ng-container>
+                  
+                </div>
+              </ng-container>
+            </mat-menu>
+            </div>
+          </ng-template>
+        
+          <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+            <div class="displayData">
+              <a *ngIf="col.columnType === 'link'" (click)="navigateToPage(row, value)">{{value}}</a>
+              <div *ngIf="col.columnType === 'text'">{{value}}</div>
+              <div *ngIf="col.columnType === 'number'">{{value}}</div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
 
-  <ngx-datatable-column name="ID" prop="empid">
-    <ng-template let-row="row" ngx-datatable-cell-template>
-        {{row.empid}}
-      </ng-template>
-  </ngx-datatable-column>
+        <ngx-datatable-column class="iconColumnClass" [minWidth]="40" [maxWidth]="45">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <mat-icon class="view_icon" (click)="editablePopup($event,row)">view_quilt</mat-icon>
+          </ng-template>
+        </ngx-datatable-column>
 
-</ngx-datatable>
+    </ngx-datatable>
+   </div>
+    <div>
+      {{inputTable.rows.length}} <span class="font-weight-light">Record(s) found</span>
+    </div>
+   </div>
 

@@ -4,6 +4,11 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {InteractiveComponent } from '../interactive/interactive.component';
 import {EmployeeService} from '../employee.service';
+import { Button } from 'selenium-webdriver';
+import { BreadcrumbData } from '../core.model';
+import { breadcrumConstants } from '../breadcrum-constants';
+import { BreadcrumbDataService } from '../breadcrumb-data.service';
+
 
 
 @Component({
@@ -19,11 +24,22 @@ export class DetailsComponent implements OnInit{
     emp=0;
     employes;
     empex: number;
+    bool: boolean;
+    withoutSaving : boolean;
    
     
      
    
-    constructor(private router: Router,private Activatedroute:ActivatedRoute, private snackbar : MatSnackBar,private employeeService: EmployeeService, private formBuilder: FormBuilder){}
+    constructor(
+        private router: Router,
+        private Activatedroute:ActivatedRoute, 
+        private snackbar : MatSnackBar,
+        private employeeService: EmployeeService, 
+        private formBuilder: FormBuilder,
+        private breadcrumbDataService : BreadcrumbDataService){
+            
+        this.breadcrumbManupilation();
+        }
    
 
     onCancel(){
@@ -35,6 +51,9 @@ export class DetailsComponent implements OnInit{
         if(this.text === 'Edit') { 
             this.text = 'Update'
             this.form.enable();
+            if(!this.form.touched){
+                this.bool=true;
+            }
             
           } else {
             this.text = 'Edit'
@@ -50,7 +69,10 @@ export class DetailsComponent implements OnInit{
 
     form: FormGroup;
     ngOnInit(){
-
+        this.breadcrumbDataService.editCount=0;
+        this.withoutSaving=false;
+        
+        console.log("ngOnit");
         this.Activatedroute.queryParamMap
         .subscribe(params => { 
           this.emp = +params.get('empl')||0;
@@ -71,11 +93,28 @@ export class DetailsComponent implements OnInit{
         url: this.formBuilder.control({value : employe.url, disabled: true})
     
         });
-
-  
+        
 
     }
-
-    
+    breadcrumbManupilation = () => {
+        let breadcrumbRemittance : BreadcrumbData;
+        breadcrumbRemittance= {
+          url : breadcrumConstants.BREADCRUM_INTERACTIVE.links.details,
+          name: breadcrumConstants.BREADCRUM_INTERACTIVE.name.details
+        };
+        this.breadcrumbDataService.breadcrumbData.push(breadcrumbRemittance);
+        console.log(this.breadcrumbDataService.breadcrumbData);
+      }
+    checkButtonDisable = () => {
+        if(!this.form.dirty && (this.text === 'Update')){
+            this.breadcrumbDataService.editCount++;
+            this.withoutSaving=false;
+            return 'disableCls';
+        }
+        else { 
+            this.withoutSaving=true;
+            return 'enableCls'
+        }
+    }
 
 }

@@ -6,10 +6,17 @@
     padding-right:5%;
     padding-left:5%;
     padding-top:1%;
+    background-color: rgb(225, 244, 245);
 }
 
-mat-icon{
-    cursor: pointer;
-    position: relative;
-    left: 900%;
+.enableCls{
+    opacity: 1;
+}
+.disableCls{
+    opacity: 0.4;
+    pointer-events: none;
+}
+mat-form-field{
+    width: 150%;
+    left: -20%;
 }

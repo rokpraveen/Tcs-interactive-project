@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="form1">
     
   <div class="mat-elevation-z8 pad" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px" >
-    <img src="./assets/add employee.png" alt="add emplyee pic" width="15%" height="10%">
+    <img src="./assets/addEmployee.png" alt="add emplyee pic" width="15%" height="10%">
     <form [formGroup]="form">
     <div>
        <mat-form-field>
@@ -46,7 +46,7 @@
       </mat-form-field>
   </div>
 
-    <button mat-raised-button color="primary" (click)=onSubmit(form.value) [disabled]="!form.valid"> Submit</button>
+    <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="onSubmit(form.value)"> Submit</button>
 
 
 </form>

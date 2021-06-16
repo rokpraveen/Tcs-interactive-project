@@ -1,0 +1,20 @@
+<div class="mainBody">
+<div class="confirmDialogTitle">
+    <pre>{{formInput.title}}</pre>
+    <ng-container>
+        <span fxFlex=" 1 1 auto"></span>
+        <mat-icon mat-dialog-close class="close-icon">close</mat-icon>
+    </ng-container>
+</div>
+
+<div mat-dialog-content class="confirmDialogContainer">
+    <p id="confirmMsg" *ngIf="formInput.message"></p>
+</div>
+<div mat-dialog-actions fxLayoutAlign="end" fxLayoutGap = "10px">
+    <button mat-raised-button type="button" class="canceButton" (click)="cancelClick()">
+        {{formInput.btnCancelText}}
+    </button>
+    <button mat-raised-button class="okButton" fxFlex="96px" color="accent" type="submit"
+    (click)="okClick()">{{formInput.btnOkText}}</button>
+</div>
+</div>
